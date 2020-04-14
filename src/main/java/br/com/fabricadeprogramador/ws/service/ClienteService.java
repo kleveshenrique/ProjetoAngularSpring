@@ -46,8 +46,8 @@ public class ClienteService {
 	}
 	
 	public Cliente alterarCliente(Cliente pCliente){
-		Cliente cliente = clienteRepository.save(pCliente); 
-		return cliente;
+		return clienteRepository.save(pCliente); 
+		
 	}
 
 }
