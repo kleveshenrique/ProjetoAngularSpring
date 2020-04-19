@@ -8,13 +8,13 @@
 </head>
 <body ng-controller="indexController" >
 
-	Oi {{nome}} {{sobrenome}}
+	{{cliente.nome}}<br><br>
 	
-	
-	
+	Nome : <input type="text" ng-model="cliente.nome"></input><button ng-click="salvarCliente()">Salvar</button> <br><br>
+
 	<div ng-repeat="cliente in clientes">
 	
-		{{cliente.id +" - "+cliente.nome}}
+		{{cliente.id +" - "+cliente.nome}} <button ng-click="excluirCliente(cliente)">Excluir</button>
 	
 	</div>
 
