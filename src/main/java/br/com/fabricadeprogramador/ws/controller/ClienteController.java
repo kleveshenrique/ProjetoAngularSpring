@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+import javax.persistence.EntityManager;
+
 import org.hibernate.validator.constraints.ParameterScriptAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,7 +47,8 @@ public class ClienteController {
 		
 		return new ResponseEntity<>(clientes,HttpStatus.OK);	
 		
-	}
+	}	
+	
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/clientes/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Cliente> buscarClientePorId(@PathVariable Integer id) {

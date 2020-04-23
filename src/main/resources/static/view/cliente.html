@@ -1,0 +1,15 @@
+
+	{{cliente.nome}}<br><br>
+	
+	Nome : <input type="text" ng-model="cliente.nome"></input>
+	<button ng-click="salvarCliente()">Salvar</button>
+	<button ng-click="cancelarAlteracaoCliente()">Cancelar</button> <br><br>
+
+	<div ng-repeat="cliente in clientes">
+	
+		{{cliente.id +" - "+cliente.nome}} 
+		<button ng-click="excluirCliente(cliente)">Excluir</button>
+		<button ng-click="alterarCliente(cliente)">Alterar</button>
+		<a href="/clientes/{{cliente.id}}">Detalhes</a>
+	
+	</div>
