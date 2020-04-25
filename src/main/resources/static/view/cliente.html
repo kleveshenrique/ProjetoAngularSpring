@@ -1,10 +1,44 @@
+<style>
+	fieldset{
+		display : inline;
+	}
 
-	{{cliente.nome}}<br><br>
+</style>
 	
-	Nome : <input type="text" ng-model="cliente.nome"></input>
-	<button ng-click="salvarCliente()">Salvar</button>
-	<button ng-click="cancelarAlteracaoCliente()">Cancelar</button> <br><br>
-
+	
+	
+	<form novalidate name="frmCliente">
+		<div>
+				Nome : <input type="text" ng-minlength="3" ng-maxlength="10" name="txtNome" ng-model="cliente.nome" required></input>
+					   <span ng-show="frmCliente.txtNome.$error.required && frmCliente.txtNome.$dirty">Nome Obrigatorio</span>
+		</div>
+		
+		<div>
+				Email : <input type="email" name="txtEmail" ng-model="cliente.email" required></input>
+					   <span ng-show="frmCliente.txtEmail.$error.required && frmCliente.txtEmail.$dirty">Nome Obrigatorio</span>
+					   <span ng-show="frmCliente.txtEmail.$error.email">Email incorreto</span>
+		</div>
+		
+		<button ng-click="salvarCliente()" ng-disabled="">Salvar</button>
+		<button ng-click="cancelarAlteracaoCliente()" ng-disabled="frmCliente.txtNome.$invalid">Cancelar</button> <br><br>
+	
+		<div>	
+			<fieldset>
+				<legend>Formulario</legend>
+				valid : {{frmCliente.$valid}}		
+			</fieldset>
+			<fieldset>
+				<legend>Nome</legend>
+				valid : {{frmCliente.txtNome.$valid}}<br>
+				invalid : {{frmCliente.txtNome.$invalid}}<br>	
+				Pristine : {{frmCliente.txtNome.$pristine}}	<br>
+				Dirty : {{frmCliente.txtNome.$dirty}}<br><br>
+				Touched : {{frmCliente.txtNome.$touched}}		
+			</fieldset>
+		</div>
+	</form>
+	
+	
 	<div ng-repeat="cliente in clientes">
 	
 		{{cliente.id +" - "+cliente.nome}} 

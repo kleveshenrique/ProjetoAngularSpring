@@ -27,21 +27,25 @@ appCliente.controller("clienteController",function($scope,$http){
 	
 	//método para salvar um cliente e adicionar na lista	
 	$scope.salvarCliente = function(){
-		
-		$http({
-			method : "POST",
-			url : "http://localhost:8080/clientes",
-			data : $scope.cliente
-		})
-		.then(function(response){
-			//$scope.clientes.push(response.data);			
-			carregarClientes();
-			$scope.cliente ={};
-			
-		},function(response){
-			console.log(response.data);
-			console.log(response.status);
-		});
+		if($scope.frmCliente.$valid){
+			$http({
+				method : "POST",
+				url : "http://localhost:8080/clientes",
+				data : $scope.cliente
+			})
+			.then(function(response){
+				//$scope.clientes.push(response.data);			
+				carregarClientes();
+				$scope.cliente ={};
+				$scope.frmCliente.$setPristine(true);
+				
+			},function(response){
+				console.log(response.data);
+				console.log(response.status);
+			});
+		}else{
+			window.alert("Dados incorretos");
+		}
 	};
 		
 	// método para excluir o cliente 
